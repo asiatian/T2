@@ -1,0 +1,7 @@
+<h1>Lista de talleres</h1>
+<ul>
+  {% for taller in talleres %}
+  <li>{{taller.nombre}}: {{taller.dia}}</li>
+  {%endfor%}
+</ul>
+<a href="{% url 'index'%}">Volver al menu</a>
