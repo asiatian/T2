@@ -4,10 +4,9 @@
 <br/>
 <h1 class="text-center"> Bienvenido a Unab altoke</h1>
 <br/>
-
 {% if user.is_authenticated %}
   <h2 class="text-left">Ahora en la unab!</h2>
-  <a href="/servicios">Listado de servicios de la universidad</a>
+  <p>El profesor Pablo Schwarzenberg nos pondra un 7</p>
 {% else %}
   <p>Para acceder al sistema debes ingresar tu usario y clave UNAB</p>
   <a href="{% url 'login' %}">Login</a>

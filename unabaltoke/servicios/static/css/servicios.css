@@ -1,6 +1,18 @@
 h1 {
-  color: #00008b 
+  color: #00008b
 }
 h2 {
-  color: Blue
+  color: darkblue
+}
+p {
+  color: red
+}
+
+
+rcorners2 {
+  border-radius: 15px 50px 30px;
+  background: #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
 }
