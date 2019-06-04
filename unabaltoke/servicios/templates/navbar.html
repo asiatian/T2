@@ -33,7 +33,9 @@
       </li>
     </ul>
     <span class="navbar-text">
-      Hola! {{user.username}}
+      <div class="container">
+        <a class="nav-link" href="/profile"> {{user.username}}</a>
+      </div>
     </span>
     {%else%}
       <li class="nav-item">

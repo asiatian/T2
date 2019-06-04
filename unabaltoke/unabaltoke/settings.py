@@ -15,8 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'servicios',
     'deportes',
-    #'accounts',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +53,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'unabaltoke.urls'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 TEMPLATES = [
     {

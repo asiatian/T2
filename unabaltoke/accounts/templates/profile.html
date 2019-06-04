@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+<h1 class="text-center">Mi perfil</h1>
+{% block content %}
+<div class="container" style="width: 25rem;">
+  <p style="display:inline">ID del estudiante:</p> {{user.id}}
+  <br></br>
+  <form action="" method="post">
+    {% csrf_token %}
+    <table class="table table-borderless">
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <tr>
+        <td colspan="2">
+          <button type="submit" class="btn btn-lg btn-danger btn-block">Guardar</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+{% endblock %}
