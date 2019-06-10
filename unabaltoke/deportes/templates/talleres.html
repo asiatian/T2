@@ -7,8 +7,10 @@
     {% for taller in talleres %}
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-tittle">{{taller.nombre}}</h5>
-        <p class="card-text"> {{taller.dia}} </p>
+        {% if taller.icono %}
+          <h5 class="card-tittle">{{taller.nombre}} <img src="{{taller.icono.url}}" height="50"/></h5>
+        {% endif %}
+        <p class="card-text"> {{taller.dia}} Hora inicio: {{taller.hora}}</p>
       </div>
     </div>
   {% endfor %}

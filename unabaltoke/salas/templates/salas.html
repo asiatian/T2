@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h1 class="text-center">Lista de Salas</h1>
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+    {% for sala in salas %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-tittle">{{sala.nombre}}</h5>
+        <p class="card-text"> {{sala.descripcion}} </p>
+        <p class="card-text"> Disponible entre las {{sala.hora_inicio}} - {{sala.hora_cierre}} hrs. </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="container" style="width: 18rem;">
+      <a href="sala/create/" class="btn btn-lg btn-danger btn-block"> Nueva Sala</a> 
+  </div>
+</div>
+</br>
+</br>
+{% endblock %}

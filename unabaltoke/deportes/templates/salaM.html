@@ -7,9 +7,9 @@
     {% for reserva in reservas %}
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-tittle">{{reserva.id}}</h5>
+        <h5 class="card-tittle">Numero de reserva: {{reserva.id}}</h5>
         <p class="card-text"> {{reserva.dia}} </p>
-        <a href="/salaM/{{reserva.id}}/" class="card-link">Ir</a>
+        <a href="/salaM/{{reserva.id}}/" class="card-link">Ver Detalles</a>
       </div>
     </div>
     {% endfor %}

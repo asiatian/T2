@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<div class= "container" style="width: 20rem;">
+<form action="sala/create/" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="form.nombre">Nombre</label>
+    <input type="text" class="form-control" id="form.nombre" value="" name="nombre" placeholder="Ingrese su nombre">
+  </div>
+  <div class="form-group">
+    <label for="form.hora_inicio">Hora de Inicio</label>
+    <input type="number" min="0" max="23" step="1" value="" id="form.hora_inicio" class="form-control" name="hora_inicio" placeholder="Ingrese la hora de inicio ">
+  </div>
+  <div class="form-group">
+    <label for="form.hora_cierre">Hora de Cierre</label>
+    <input type="number" min="0" max="23" step="1" value="" id="form.hora_cierre" class="form-control" name="hora_cierre" placeholder="Ingrese la hora de cierre">
+  </div>
+  <div class="form-group">
+    <label for="form.descripcion">Descripcion</label>
+    <input type="text" class="form-control" id="form.nombre" value="" name="descripcion" placeholder="Ingrese la descripcion">
+  </div>
+    <button type="submit" class="btn btn-lg btn-danger btn-block">Guardar</button>
+</form>
+</div>
+</br>
+{% endblock %}
+
+
+
+
+
+
+
+

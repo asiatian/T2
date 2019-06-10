@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 from .models import TallerDeportivo, ReservaMusculatura
 
@@ -19,6 +20,8 @@ def dia(input):
         return "Jueves"
     elif(input == 5):
         return "Viernes"
+    elif(input == 6):
+        return "Sabado"
 
 class TalleresView(LoginRequiredMixin,TemplateView):
     def get(self,request,**kwargs):
@@ -31,12 +34,15 @@ class TallerCreate(LoginRequiredMixin,CreateView):
 
 class HorasView(LoginRequiredMixin,TemplateView):
     def get(self,request,**kwargs):
+        current_user = request.user
         fixed = []
-        args= {'reservas': ReservaMusculatura.reservas.all()}
-        #for arg in args:
-        #    var = [arg.nombre,dia(arg.dia),arg.hora]
-        #    fixed.append(var)
-        return render(request, 'salaM.html',args)
+        args= ReservaMusculatura.reservas.all()
+        for arg in args:
+            #print(User.id)
+            if(current_user==arg.estudiante):
+                var = {"id":arg.id,"estudiante":arg.estudiante,"dia":dia(arg.dia),"bloque":arg.bloque}
+                fixed.append(var)
+        return render(request, 'salaM.html',{"reservas":fixed})
 
 class TomarHora(CreateView):
     model = ReservaMusculatura
