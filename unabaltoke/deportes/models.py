@@ -29,11 +29,11 @@ class ReservaMusculatura(models.Model):
         (5,'Viernes'),
         (6,'Sabado')
     )
-    id= models.AutoField(primary_key=True)
     estudiante = models.ForeignKey(User, on_delete=models.CASCADE)
     dia = models.IntegerField(choices=DAY_CHOICES)
+    Fecha = models.DateField(null=True)
     bloque = models.TimeField()
     reservas=models.Manager()
 
     def __str__(self):
-        return "{}".format(self.nombre)
+        return "{}".format(self.id)

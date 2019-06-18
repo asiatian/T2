@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+</br>
+{% block content%}
+<div class="jumbotron">
+  <h1 class="display-4">Numero de reserva {{reserva.id}}</h1>
+  <p class="lead">{{reserva.dia}}</p>
+  <hr class="my-4">
+  <p>Hora {{reserva.bloque}} , fecha: {{reserva.fecha}}</p>
+  <a class="btn btn-primary btn-lg" href="/sala/{{reserva.id}}/update/" role="button">Actualizar</a>
+  <a class="btn btn-primary btn-lg" href="/sala/{{reserva.id}}/delete/" role="button">Borrar</a>
+</div>
+</br>
+{% endblock %}

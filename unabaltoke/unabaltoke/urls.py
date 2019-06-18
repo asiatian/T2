@@ -25,4 +25,5 @@ urlpatterns = [
     path(r'',include('deportes.urls')),
     path(r'',include('accounts.urls')),
     path(r'',include('salas.urls')),
+    path(r'',include('servicioAcademico.urls'))
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

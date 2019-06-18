@@ -9,14 +9,14 @@
       <div class="card-body">
         <h5 class="card-tittle">Numero de reserva: {{reserva.id}}</h5>
         <p class="card-text"> {{reserva.dia}} </p>
-        <a href="/salaM/{{reserva.id}}/" class="card-link">Ver Detalles</a>
+        <a href="/sala/{{reserva.id}}/" class="card-link">Ver Detalles</a>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
 <div class="text-right">
-  <a class="btn btn-danger btn-lg" href="/reserva/TomarHora" role="buton">Tomar Hora</a>
+  <a class="btn btn-danger btn-lg" href="/sala/TomarHora" role="buton">Tomar Hora</a>
 </div>
 </br>
 {% endblock %}

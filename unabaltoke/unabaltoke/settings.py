@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'deportes',
     'accounts',
     'salas',
+    'servicioAcademico'
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT= 'media'
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
