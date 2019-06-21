@@ -14,18 +14,20 @@ def profile(request):
 def update_profile(request):
     try:
         profile = request.user.profile
+        #print(profile)
     except Profile.DoesNotExist:
         profile = Profile(user=request.user)
+        profile.save()
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile was updated.')
+            messages.success(request, 'Su perfil fue actualizado con exito.')
             return redirect('profile')
         else:
-            messages.error(request, ('Please correct the error below.'))
+            messages.error(request, ('Error.'))
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)

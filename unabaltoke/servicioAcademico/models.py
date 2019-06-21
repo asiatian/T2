@@ -6,12 +6,14 @@ from django.dispatch import receiver
 class NumeroA(models.Model):
     id = models.AutoField(primary_key=True)
     estudiante =  models.ForeignKey(User, on_delete=models.CASCADE)
+    activo = models.BinaryField(default=True)
     numeros =  models.Manager()
 
 class DiaA(models.Model):
     id = models.AutoField(primary_key=True)
     dia = models.DateField(null=True)
-    numeros = models.ManyToManyField(NumeroA)
+    numeros = models.ManyToManyField(NumeroA,blank=True,related_name=actual)
+    #actual = models.ForeignKey(NumeroA,blank=True,null=True,on_delete=models.SET_NULL)
     dias = models.Manager()
 
 @receiver(post_save, sender=User)

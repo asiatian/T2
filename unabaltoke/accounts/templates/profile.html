@@ -3,6 +3,10 @@
 <h1 class="text-center">Mi perfil</h1>
 {% block content %}
 <div class="container" style="width: 25rem;">
+  {% for message in messages %}
+    <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    </br>
+  {% endfor %}
   <p style="display:inline">ID del estudiante:</p> {{user.id}}
   <br></br>
   <form action="" method="post">

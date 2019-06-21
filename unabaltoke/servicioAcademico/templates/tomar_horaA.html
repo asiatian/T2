@@ -1,11 +1,15 @@
 {% extends 'base.html'%}
 
 {% block content%}
-<p>
+</br>
 <form action="" method="post">
   {% csrf_token %}
-  <h2>¿Esta seguro que desea tomar hora?</h2>
-  <button type="submit" class="btn btn-alert">Confirmar</button>
+  <h2 class="text-center">¿Esta seguro que desea tomar hora?</h2>
+  <tr>
+    <td colspan="2">
+      <button type="submit" class="btn btn-lg btn-danger btn-block">Guardar</button>
+    </td>
+  </tr>
 </form>
-</p>
+</br>
 {% endblock %}
