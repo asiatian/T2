@@ -4,6 +4,7 @@ import datetime
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
+from accounts.models import Profile
 # Create your views here.
 
 class MostrarDiaA(TemplateView):
@@ -20,6 +21,7 @@ class MostrarDiaA(TemplateView):
         except Exception as e:
             cero = 0;
             return render(request,'horas.html',{"numero":cero})
+        print(request.user.profile.horatomada)
         if(argumento == None):
             cero = 0;
             return render(request,'horas.html',{"numero":cero})
@@ -31,9 +33,9 @@ class TomarHora(LoginRequiredMixin,CreateView):
     fields = []
     def form_valid(self,form):
         form.instance.estudiante = self.request.user
-        self.request.user.profile.horatomada = form.instance
-        self.request.user.profile.horatomada.save()
-        self.request.user.profile.save()
+        profile = Profile.objects.get(user=self.request.user)
+        profile.horatomada = form.instance
+        profile.horatomada.save()
         dia = DiaA.dias.get(dia=datetime.datetime.now().date())
         form.instance.save()
         dia.numeros.add(form.instance)

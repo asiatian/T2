@@ -11,6 +11,11 @@ class Profile(models.Model):
     tipo = models.CharField(max_length= 10,blank=True, default = "Pregrado")
     horatomada = models.ForeignKey(NumeroA, blank=True, null=True , on_delete=models.CASCADE)
 
+    def definirHoraServicio(self, instance,**kwargs):
+        self.horatomada=instance
+        self.horatomada.save()
+        print(self.horatomada)
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if kwargs.get('created', False):
