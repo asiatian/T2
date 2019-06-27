@@ -11,10 +11,12 @@ class Profile(models.Model):
     tipo = models.CharField(max_length= 10,blank=True, default = "Pregrado")
     horatomada = models.ForeignKey(NumeroA, blank=True, null=True , on_delete=models.CASCADE)
 
-    def definirHoraServicio(self, instance,**kwargs):
-        self.horatomada=instance
-        self.horatomada.save()
-        print(self.horatomada)
+    def guardar(self,instance,**kwargs):
+        nuevo = self
+        nuevo.horatomada = instance
+        profile = super(Profile, nuevo).save()
+        self.user.save()
+        return profile
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -23,6 +25,8 @@ def create_user_profile(sender, instance, created, **kwargs):
 post_save.connect(create_user_profile,sender=User)
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender, instance, created,**kwargs):
+def save_profile(sender, instance, created, **kwargs):
+    user = instance
     if created:
-        instance.profile.save()
+        profile = Profile(user=user)
+        profile.save()

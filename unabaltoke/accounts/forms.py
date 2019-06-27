@@ -11,3 +11,14 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('rut', 'sede', 'tipo')
+
+class ProfileFormHora(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('horatomada',)
+    def save(self, user=None):
+        profile = super(ProfileFormHora, self).save(commit=False)
+        if user:
+            profile.user = user
+        profile.save()
+        return profile
