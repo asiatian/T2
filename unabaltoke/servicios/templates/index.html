@@ -5,10 +5,31 @@
 <h1 class="text-center"> Bienvenido a Unab altoke</h1>
 <br/>
 {% if user.is_authenticated %}
-  <h2 class="text-left">Ahora en la unab!</h2>
-  <p>Se esta realizando Feria de inovación en el casino de A2</p>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center">Ahora en la unab!</h2>
+          <h5>Se presentan los proyectos de Topico 2</h5>
+          <h5>Vacaciones Ya!</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-center">Menu de Hoy</h4>
+          <div class="text-center">
+            <img src="https://img.pystatic.com/products/1948359_2017191655.jpg" class="img-fluid" alt="Responsive image">
+            <p>Papas sofritas con Gallus gallus domesticus al horno</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% else %}
   <p>Para acceder al sistema debes ingresar tu usario y clave UNAB</p>
   <a href="{% url 'login' %}">Login</a>
 {% endif %}
+</br>
 {% endblock %}

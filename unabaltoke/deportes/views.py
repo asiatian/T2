@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from .forms import ReservaForm
 
 from .models import TallerDeportivo, ReservaMusculatura
 
@@ -56,11 +57,10 @@ class DetalleHoraView(LoginRequiredMixin,TemplateView):
 class TomarHora(LoginRequiredMixin,CreateView):
     model = ReservaMusculatura
     template_name = './salaM_form.html'
-    fields = ['dia','Fecha','bloque']
+    form_class = ReservaForm
     def form_valid(self,form):
         form.instance.estudiante = self.request.user
         return super(TomarHora,self).form_valid(form)
-
 
 class BorrarHora(DeleteView):
     model = ReservaMusculatura
