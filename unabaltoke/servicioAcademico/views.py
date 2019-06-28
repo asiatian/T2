@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from accounts.models import Profile
-from accounts.forms import ProfileFormHora
+from accounts.forms import *
 # Create your views here.
 
 class MostrarDiaA(TemplateView):
@@ -24,12 +24,6 @@ class MostrarDiaA(TemplateView):
             argsF.save()
             argsT = DiaT(dia=datetime.datetime.now().date())
             argsT.save()
-        #args = DiaA.dias.get(dia=datetime.datetime.now().date())
-        #try:
-        #    argumentoA = argsA.numeros.last()
-        #except Exception as e:
-        #    argumentoA = 0
-        #    argA = 0
         argumentoA = argsA.numeros.last()
         if(argumentoA != None):
             argumentoA = argsA.numeros.last().id
@@ -48,7 +42,7 @@ class MostrarDiaA(TemplateView):
         args = {"A":argumentoA,"F":argumentoF,"T":argumentoT}
         return render(request, 'horas.html',{"numeros":args})
 
-class TomarHora(LoginRequiredMixin,CreateView):
+class TomarHoraA(LoginRequiredMixin,CreateView):
     model = NumeroA
     template_name = './tomar_horaA.html'
     fields = []
@@ -59,5 +53,33 @@ class TomarHora(LoginRequiredMixin,CreateView):
         form.instance.save()
         dia.numeros.add(form.instance)
         dia.save()
-        self.request.user.profile.guardar(form.instance)
-        return super(TomarHora,self).form_valid(form)
+        self.request.user.profile.guardarA(form.instance)
+        return super(TomarHoraA,self).form_valid(form)
+
+class TomarHoraF(LoginRequiredMixin,CreateView):
+    model = NumeroF
+    template_name = './tomar_horaA.html'
+    fields = []
+
+    def form_valid(self,form):
+        form.instance.estudiante = self.request.user
+        dia = DiaF.dias.get(dia=datetime.datetime.now().date())
+        form.instance.save()
+        dia.numeros.add(form.instance)
+        dia.save()
+        self.request.user.profile.guardarF(form.instance)
+        return super(TomarHoraF,self).form_valid(form)
+
+class TomarHoraT(LoginRequiredMixin,CreateView):
+    model = NumeroT
+    template_name = './tomar_horaA.html'
+    fields = []
+
+    def form_valid(self,form):
+        form.instance.estudiante = self.request.user
+        dia = DiaT.dias.get(dia=datetime.datetime.now().date())
+        form.instance.save()
+        dia.numeros.add(form.instance)
+        dia.save()
+        self.request.user.profile.guardarT(form.instance)
+        return super(TomarHoraT,self).form_valid(form)

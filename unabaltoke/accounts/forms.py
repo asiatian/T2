@@ -12,12 +12,34 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('rut', 'sede', 'tipo')
 
-class ProfileFormHora(forms.ModelForm):
+class ProfileFormHoraA(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('horatomada',)
+        fields = ('horatomadaA',)
     def save(self, user=None):
-        profile = super(ProfileFormHora, self).save(commit=False)
+        profile = super(ProfileFormHoraA, self).save(commit=False)
+        if user:
+            profile.user = user
+        profile.save()
+        return profile
+
+class ProfileFormHoraF(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('horatomadaF',)
+    def save(self, user=None):
+        profile = super(ProfileFormHoraF, self).save(commit=False)
+        if user:
+            profile.user = user
+        profile.save()
+        return profile
+
+class ProfileFormHoraT(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('horatomadaT',)
+    def save(self, user=None):
+        profile = super(ProfileFormHoraT, self).save(commit=False)
         if user:
             profile.user = user
         profile.save()

@@ -6,8 +6,8 @@
   <div class="row mt-5 justify-content-center">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% if user.profile.horatomada  == None %}
-          <h5 class="card-tittle"><a href="/servicioAcademico/TomaA/" class="link"> Numero en F </a>: {{numeros.F}}</h5>
+        {% if user.profile.horatomadaA  == None and user.profile.horatomadaF  == None and user.profile.horatomadaT  == None %}
+          <h5 class="card-tittle"><a href="/servicioAcademico/TomaF/" class="link"> Numero en F </a>: {{numeros.F}}</h5>
         {% else %}
           <h5 class="card-tittle">Numero en F: {{numeros.F}}</h5>
         {%endif%}
@@ -15,7 +15,7 @@
     </div>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% if user.profile.horatomada  == None %}
+        {% if user.profile.horatomadaA  == None and user.profile.horatomadaF  == None and user.profile.horatomadaT  == None %}
           <h5 class="card-tittle"><a href="/servicioAcademico/TomaA/" class="link"> Numero en A </a>: {{numeros.A}}</h5>
         {% else %}
           <h5 class="card-tittle">Numero en A: {{numeros.A}}</h5>
@@ -24,15 +24,15 @@
     </div>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        {% if user.profile.horatomada  == None %}
-          <h5 class="card-tittle"><a href="/servicioAcademico/TomaA/" class="link"> Numero en T </a>: {{numeros.T}}</h5>
+        {% if user.profile.horatomadaA  == None and user.profile.horatomadaF  == None and user.profile.horatomadaT  == None %}
+          <h5 class="card-tittle"><a href="/servicioAcademico/TomaT/" class="link"> Numero en T </a>: {{numeros.T}}</h5>
         {% else %}
           <h5 class="card-tittle">Numero en T: {{numeros.T}}</h5>
         {%endif%}
       </div>
     </div>
   </div>
-  {% if user.profile.horatomada  != None %}
+  {% if user.profile.horatomadaA  != None or user.profile.horatomadaF  != None or user.profile.horatomadaT  != None %}
   <p class="text-center">Aún tiene un numero tomado</p>
   {%endif%}
   <p class="text-center">Horario de atención</p>
